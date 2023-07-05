@@ -42,6 +42,11 @@ nav button {
   color: white;
   margin: 10px;
 }
+
+nav .fa-solid {
+  display: none;
+}
+
 .hero {
   /* border: 1px solid red; */
   display: flex;
@@ -54,7 +59,7 @@ nav button {
 .hero-content {
   flex: 1;
   margin: auto;
-  padding: 20px;
+  padding: 20px 0;
 }
 .hero-content h1 {
   font-size: 3rem;
@@ -160,9 +165,11 @@ nav button {
   margin: 1rem 0;
 }
 .subscribe span {
-  margin: 0.8rem 0;
   width: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .subscribe span input {
   width: 40%;
@@ -393,134 +400,75 @@ nav button {
   }
 }
 
-/* ---- */
+/* responsive */
 
-/* #services {
-  margin-left: auto;
-  margin-right: auto;
-  border: 1px red solid;
-  padding-bottom: 50px;
-  padding-top: 15px;
+@media only screen and (min-width: 576px) {
 }
-#services h2 {
-  padding-bottom: 25px;
-  border-bottom: 1px solid #ddd;
-} */
-.wrapper-container {
-  /* border: 1px red solid; */
-  /* width: 1170px;
-  margin: auto;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  align-items: stretch;
-  padding: 25px 0; */
+@media only screen and (max-width: 576px) {
 }
-
-.card-details {
-  /* flex-basis: 30%;
-  margin: 10px 0px;
-  padding: 20px 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center; */
-
-  /* background: #f2efed;
-  width: calc(33.33% - 30px);
-  margin-left: 30px;
-  margin-top: 50px;
-  padding: 0;
-  text-align: center; */
-}
-
-.card {
-  /* border: 1px grey solid;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  height: 100%; */
-
-  /* padding-bottom: 0px; */
-}
-
-.card img {
-  /* height: 12rem; */
-  /* width: 100%;
-  object-fit: cover; */
-  /* height: auto;*/
-  /* 
-  max-height: 11.2rem;
-  width: 100%;
-  object-fit: cover; */
-  /* padding-top: 20px; */
-}
-
-/* .card-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-} */
-
-/* .card h1 {
-  padding-bottom: 25px;
-  text-transform: capitalize;
-}
-
-.card p {
-  padding: 3px 0;
-  font-size: 14px;
-  margin: 0;
-}
-
-.card button {
-  border: none;
-  background-color: #eac715;
-  padding: 12px 30px;
-  border-radius: 5px;
-  color: white;
-  width: fit-content;
-  margin: 10px auto;
-} */
-
-/* 
-
-@media only screen and (min-width: 1400px) {
-  .col-xxl-4 {
-    float: left;
-    padding: 0 15px;
+@media only screen and (max-width: 768px) {
+  .main-container-menu,
+  nav .nav-btn {
+    display: none;
   }
-  .col-xxl-4 {
-    width: 33.3333%;
+  nav .nav-icon {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
   }
-}
-@media only screen and (min-width: 1200px) and (max-width: 1399px) {
-  .col-xl-4 {
-    float: left;
-    padding: 0 15px;
+  .hero {
+    margin: auto;
+    width: 55%;
   }
-  .col-xl-4 {
-    width: 33.3333%;
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .subscribe h1 {
+    text-align: center;
+  }
+  .subscribe span {
+    flex-direction: column;
+  }
+  .subscribe span input {
+    width: 70%;
+    margin: 1rem;
+  }
+  .subscribe span button {
+    width: 40%;
+  }
+  .footer1,
+  .footer2,
+  .footer3,
+  .footer4 {
+    margin: 2rem 0;
   }
 }
 
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .col-lg-4 {
-    float: left;
-    padding: 0 15px;
+@media only screen and (max-width: 992px) {
+  .wrapper-container {
+    flex-direction: column;
+    width: auto;
   }
-  .col-lg-4 {
-    width: 33.3333%;
+  .footer-main {
+    flex-direction: column;
+    margin: 0;
+  }
+  .hero {
+    margin: auto;
+    width: 75%;
+    flex-direction: column-reverse;
+  }
+  .wrapper-getinvolved {
+    flex-direction: column;
+  }
+  .getinvolved-img img {
+    height: 14rem;
+  }
+  .getinvolved-content {
+    width: 80%;
   }
 }
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .col-md-4 {
-    float: left;
-    padding: 0 15px;
-  }
-  .col-md-4 {
-    width: 33.3333%;
-  }
-} */
-
-/* ---- */
+@media only screen and (max-width: 1200px) {
+}
+@media only screen and (max-width: 1400px) {
+}

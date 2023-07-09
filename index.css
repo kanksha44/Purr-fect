@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: cursive;
+  font-family: Arial, Helvetica, sans-serif;
 }
 #main-container {
   /* border: 1px red solid; */
@@ -43,7 +43,11 @@ nav button {
   margin: 10px;
 }
 
-nav .fa-solid {
+nav #nav-icon-bar {
+  display: none;
+}
+
+nav .nav-icon-x {
   display: none;
 }
 
@@ -86,6 +90,10 @@ nav .fa-solid {
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
+.hero-btn button a {
+  text-decoration: none;
+  color: white;
+}
 
 /* services */
 
@@ -95,7 +103,7 @@ nav .fa-solid {
 #services h2 {
   font-size: 2.5rem;
   text-align: center;
-  padding: 25px 0;
+  padding: 5px 0;
 }
 .wrapper-container {
   /* border: 1px red solid; */
@@ -140,6 +148,9 @@ nav .fa-solid {
   color: white;
   margin: 10px 0;
 }
+.card-content button a {
+  text-decoration: none;
+}
 
 /* contact */
 
@@ -178,7 +189,7 @@ nav .fa-solid {
 }
 .subscribe span button {
   border-radius: 1rem;
-  width: 10%;
+  width: 32%;
   height: 40px;
   background-color: #eac715;
   color: white;
@@ -249,7 +260,7 @@ nav .fa-solid {
   padding: 20px 0;
   text-align: center;
   filter: blur(3px);
-  transition: filter 0.6s ease;
+  transition: filter 0.8s ease;
 }
 .getinvolved-img img {
   height: 25rem;
@@ -387,6 +398,9 @@ nav .fa-solid {
 .carousel .card p {
   margin: 12px 0;
 }
+.main-container-menu-resp {
+  display: none;
+}
 
 @media screen and (max-width: 900px) {
   .wrapper .carousel {
@@ -402,20 +416,71 @@ nav .fa-solid {
 
 /* responsive */
 
-@media only screen and (min-width: 576px) {
+/* @media only screen and (min-width: 576px) {
 }
 @media only screen and (max-width: 576px) {
-}
+} */
 @media only screen and (max-width: 768px) {
+  /* new css starts */
+  .main-container-menu-resp {
+    display: none;
+  }
+
+  .menu-btn-open {
+    display: block;
+    color: #9236c1;
+  }
+
+  .main-container-menu-resp.menu-btn-open-resp {
+    display: none;
+    flex-direction: column;
+    align-items: center; /* Vertically align the items */
+    justify-content: space-around; /* Horizontally center the items */
+    position: fixed; /* Use fixed positioning to keep the sidebar visible */
+    top: 0;
+    right: 0;
+    background: white;
+    width: 70%; /* Adjust the width as per your preference */
+    height: 100vh; /* Use the full viewport height */
+    padding: 140px 0; /* Add some padding for better spacing */
+    z-index: 99; /* Set a high z-index to ensure it appears above other elements */
+  }
+
+  .main-container-menu-resp.menu-btn-open-resp li {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px; /* Add some margin between the list items */
+  }
+  /* new css ends */
+
+  .menu-btn-open {
+    display: block;
+    color: #9236c1;
+  }
+  .main-container-menu-resp {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    background: white;
+    width: 40%;
+    height: 70%;
+    /* padding-left: 10%; */
+  }
+  .main-container-menu-resp li {
+    display: flex;
+    justify-content: center;
+  }
   .main-container-menu,
   nav .nav-btn {
     display: none;
   }
-  nav .nav-icon {
+  nav #nav-icon-bar {
     display: block;
     padding: 10px;
     cursor: pointer;
   }
+
   .hero {
     margin: auto;
     width: 55%;
@@ -448,6 +513,7 @@ nav .fa-solid {
   .wrapper-container {
     flex-direction: column;
     width: auto;
+    padding: 0;
   }
   .footer-main {
     flex-direction: column;
@@ -473,6 +539,7 @@ nav .fa-solid {
   }
   .card-details {
     padding: 20px;
+    margin: 0;
   }
   .card img {
     height: auto;
@@ -481,4 +548,70 @@ nav .fa-solid {
 @media only screen and (max-width: 1200px) {
 }
 @media only screen and (max-width: 1400px) {
+}
+
+/* Add this CSS code at the end of your existing CSS code */
+.menu-btn-open ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-btn-open ul li {
+  margin: 5px 0;
+}
+
+.menu-btn-open.show ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+#nav-icon-bar {
+  display: block;
+}
+
+/* Add this CSS code at the end of your existing CSS code */
+@media only screen and (max-width: 768px) {
+  /* .menu-btn-open .main-container-menu {
+    display: block;
+  } */
+
+  .menu-btn-open .nav-btn {
+    display: none;
+  }
+
+  .nav-icon-x {
+    display: block;
+    z-index: 100;
+  }
+
+  .main-container-menu-resp.show {
+    display: block;
+  }
+}
+
+/* sdfds */
+#nav-icon-x {
+  display: none;
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  cursor: pointer;
+}
+
+.menu-btn-open-resp #nav-icon-x {
+  display: block;
+}
+
+.menu-btn-open-resp .nav-icon-bar {
+  display: none;
 }

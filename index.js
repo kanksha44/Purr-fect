@@ -93,22 +93,11 @@ carousel.addEventListener("scroll", infiniteScroll);
 wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
 
-
 // function myfunction(){
 // var x = document.getElementById("main-container")
 // if(x.className=="topnav"){
-//   x.className += 
+//   x.className +=
 // }
 // }
 
 // JavaScript for Hamburger Menu
-const navButton = document.querySelector('.nav-btn');
-const barsIcon = document.querySelector('.fa-bars');
-const menuItems = document.querySelector('.main-container-menu');
-
-navButton.addEventListener('click', toggleMenu);
-barsIcon.addEventListener('click', toggleMenu);
-
-function toggleMenu() {
-  menuItems.classList.toggle('active');
-}

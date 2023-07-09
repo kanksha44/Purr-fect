@@ -17,22 +17,35 @@
 <body>
 
     <section class="topnav" id="main-container">
+
+
         <nav>
 
             <div class="logo"><img src="./Assets/catlogo.png" alt="cat">
                 <h4>Purr-fect</h4>
             </div>
 
-            <ul class="main-container-menu">
+            <ul class="main-container-menu menu-btn-open">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#getinvolved">Get Involved</a></li>
                 <li><a href="#whoweare">Who We Are</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="sidebar-btn">
+                <ul class="main-container-menu-resp menu-btn-open-resp">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#getinvolved">Get Involved</a></li>
+                    <li><a href="#whoweare">Who We Are</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
             <button class="nav-btn">Donate</button>
-            <i class="fa-solid fa-bars nav-icon"></i>
+            <i class="fa-solid fa-bars nav-icon-bar" id="nav-icon-bar"></i>
+            <i class="fa-solid fa-xmark nav-icon-x" id="nav-icon-x"></i>
 
         </nav>
+
+
         <div class="hero">
             <div class="hero-content">
                 <div class="hero-title">
@@ -43,8 +56,9 @@
                         them with exceptional care and attention.</p>
                 </div>
                 <div class="hero-btn">
-                    <button>Our services <i class="fa-solid fa-arrow-up-right-from-square"></i></button>
-                    <button>Schedule a call <i class="fa-solid fa-phone"></i></i></button>
+                    <button><a href="#services">Our services <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a></button>
+                    <button><a href="#">Schedule a call <i class="fa-solid fa-phone"></i></i></a></button>
                 </div>
             </div>
             <div class="hero-images">
@@ -65,12 +79,12 @@
                     <figure class="service-img">
                         <img src="./Assets/cat-vet.jpg" alt="cat vet">
                     </figure>
+                    <div class="card-content">
 
-
-                    <h1>Pawsitive Health</h1>
-                    <p class="title">Nurturing Your Cat's Well-being with Veterinary Care</p>
-                    <button>See more</button>
-
+                        <h1>Pawsitive Health</h1>
+                        <p class="title">Nurturing Your Cat's Well-being with Veterinary Care</p>
+                        <button><a href="./Pages/services.html">See more</a></button>
+                    </div>
                 </div>
             </div>
             <div class="card-details">
@@ -80,7 +94,7 @@
                         <h1>From Meows to High Fives</h1>
                         <p class="title">Teaching Commands & guidance to train your cat service
                         </p>
-                        <button>See more</button>
+                        <button><a href="./Pages/services.html">See more</a></button>
                     </div>
                 </div>
             </div>
@@ -90,7 +104,7 @@
                     <div class="card-content">
                         <h1>Pampered Paws</h1>
                         <p class="title">Elevating Your Cat's Beauty with Professional Grooming Service</p>
-                        <button>See more</button>
+                        <button><a href="./Pages/services.html">See more</a></button>
                     </div>
                 </div>
             </div>
@@ -100,7 +114,7 @@
                     <div class="card-content">
                         <h1>Social Playdates</h1>
                         <p class="title">Introducing Your Cat to Feline Companions</p>
-                        <button>See more</button>
+                        <button><a href="./Pages/services.html">See more</a></button>
                     </div>
                 </div>
             </div>
@@ -110,7 +124,7 @@
                     <div class="card-content">
                         <h1>From Kibble to Gourmet</h1>
                         <p class="title">Exploring a Variety of Pet Food Options</p>
-                        <button>See more</button>
+                        <button><a href="./Pages/services.html">See more</a></button>
                     </div>
                 </div>
             </div>
@@ -193,7 +207,16 @@
     <section id="contact">
         <div class="subscribe">
             <h1>Subscribe NewsLetter & Get Purr-fect News</h1>
-            <span><input type="email" placeholder="Enter your E-mail Address"><button>Subscribe Now</button></span>
+            <!-- <span><input type="email" placeholder="Enter your E-mail Address"><button>Subscribe Now</button></span> -->
+            <span>
+                <form action="https://formspree.io/f/xaygyjzy" method="POST">
+                    <label>
+                        Your email:
+                        <input type="email" name="email">
+                    </label>
+                    
+                    <button type="submit">Subscribe now</button>
+                </form>
         </div>
         <div class="footer-main">
             <div class="footer1">
@@ -251,7 +274,33 @@
     </section>
 
 
-    <script></script>
+
+    <script>
+
+        // 3rd
+        const mobileBtn = document.getElementById("nav-icon-bar");
+        const mobileBtnExit = document.getElementById("nav-icon-x");
+        const nav = document.querySelector(".sidebar-btn");
+        const menu = document.querySelector(".main-container-menu-resp");
+
+        mobileBtn.addEventListener("click", () => {
+            nav.classList.add("menu-btn-open-resp");
+            mobileBtn.style.display = "none";
+            mobileBtnExit.style.display = "block";
+            menu.classList.add("show");
+        });
+
+        mobileBtnExit.addEventListener("click", () => {
+            nav.classList.remove("menu-btn-open-resp");
+            mobileBtn.style.display = "block";
+            mobileBtnExit.style.display = "none";
+            menu.classList.remove("show");
+        });
+
+
+
+
+    </script>
 </body>
 
 </html>

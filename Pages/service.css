@@ -1,0 +1,29 @@
+body {
+  text-align: center;
+  padding: 10px;
+}
+
+#services-page {
+  margin: auto;
+  /* width: 55%; */
+  border: 1px red solid;
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin: 6rem 0;
+}
+
+.services-page-content {
+  flex: 1;
+}
+.services-page-content h1 {
+  font-size: 30px;
+}
+.services-page-images {
+  flex: 1;
+}
+.services-page-images img {
+  width: 100%;
+  height: 100%;
+}

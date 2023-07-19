@@ -15,7 +15,6 @@
 </head>
 
 <body>
-
     <section class="topnav" id="main-container">
 
 
@@ -37,11 +36,11 @@
                     <li><a href="#getinvolved">Get Involved</a></li>
                     <li><a href="#whoweare">Who We Are</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <i class="fa-solid fa-xmark nav-icon-x" id="nav-icon-x"></i>
                 </ul>
             </div>
             <button class="nav-btn">Donate</button>
             <i class="fa-solid fa-bars nav-icon-bar" id="nav-icon-bar"></i>
-            <i class="fa-solid fa-xmark nav-icon-x" id="nav-icon-x"></i>
 
         </nav>
 
@@ -214,7 +213,7 @@
                         Your email:
                         <input type="email" name="email">
                     </label>
-                    
+
                     <button type="submit">Subscribe now</button>
                 </form>
         </div>
@@ -270,12 +269,17 @@
                     <li>Contact us</li>
                 </ul>
             </div>
+            <div id="scrollToTopBtn">
+                <i class="fas fa-arrow-up"></i>
+            </div>
         </div>
+
     </section>
 
 
 
-    <script>
+
+    <!-- <script>
 
         // 3rd
         const mobileBtn = document.getElementById("nav-icon-bar");
@@ -298,6 +302,84 @@
         });
 
 
+        mobileBtnExit.addEventListener("click", closeSidebar);
+
+        // Get all the links in the sidebar
+        const sidebarLinks = document.querySelectorAll(".main-container-menu-resp li");
+
+
+        // Attach click event listener to each link
+        sidebarLinks.forEach(link => {
+            link.addEventListener("click", closeSidebar);
+        });
+
+
+
+
+    </script> -->
+
+    <script>
+        // Get references to the necessary elements
+        const mobileBtn = document.getElementById("nav-icon-bar");
+        const mobileBtnExit = document.getElementById("nav-icon-x");
+        const nav = document.querySelector(".sidebar-btn");
+        const menu = document.querySelector(".main-container-menu-resp");
+
+        // Function to close the sidebar
+        function closeSidebar() {
+            nav.classList.remove("menu-btn-open-resp");
+            mobileBtn.style.display = "block";
+            mobileBtnExit.style.display = "none";
+            menu.classList.remove("show");
+        }
+
+        mobileBtn.addEventListener("click", () => {
+            nav.classList.add("menu-btn-open-resp");
+            mobileBtn.style.display = "none";
+            mobileBtnExit.style.display = "block";
+            menu.classList.add("show");
+        });
+
+        mobileBtnExit.addEventListener("click", closeSidebar);
+
+        // Get all the links in the sidebar
+        const sidebarLinks = document.querySelectorAll(".main-container-menu-resp a");
+
+
+        // sidebarLinks.forEach(link => {
+        //     link.addEventListener("click", () => {
+        //         console.log(`Link clicked ${link}`);
+        //     });
+        // });
+
+        // Attach click event listener to each link
+        sidebarLinks.forEach(link => {
+            // console.log(link, "adsfasdf")
+            link.addEventListener("click", closeSidebar);
+        });
+
+
+
+        // *******  scrolling functionality ******
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // Show/hide the button based on the scroll position
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        // Scroll to top when the button is clicked
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
 
 
     </script>

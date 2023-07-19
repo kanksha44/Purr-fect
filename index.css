@@ -201,6 +201,7 @@ nav .nav-icon-x {
   justify-content: center;
   width: 100%;
   margin: 4rem 0;
+  position: relative;
 }
 .footer1,
 .footer2,
@@ -400,6 +401,13 @@ nav .nav-icon-x {
 }
 .main-container-menu-resp {
   display: none;
+}
+
+#scrollToTopBtn {
+  position: absolute;
+  bottom: 5%;
+
+  right: 5%;
 }
 
 @media screen and (max-width: 900px) {

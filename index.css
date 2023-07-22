@@ -142,7 +142,7 @@ nav button.logout-icon a {
   flex-basis: 30%;
   margin: 10px 0;
 }
-.card-box .card-images img {
+.card-box img {
   height: 200px;
 }
 .card-title {
@@ -575,24 +575,99 @@ nav button.logout-icon a {
   }
 }
 
+/* Add this CSS code at the end of your existing CSS code */
+.menu-btn-open ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-btn-open ul li {
+  margin: 5px 0;
+}
+
+.menu-btn-open.show ul {
+  opacity: 1;
+  visibility: visible;
+}
+
+#nav-icon-bar {
+  display: block;
+}
+
+/* sdfds */
+#nav-icon-x {
+  display: none;
+  position: absolute;
+  top: 5%;
+  right: 3%;
+  cursor: pointer;
+}
+
+.menu-btn-open-resp #nav-icon-x {
+  display: block;
+}
+
+.menu-btn-open-resp .nav-icon-bar {
+  display: none;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 992px) {
+  .donate-btn {
+    display: none;
+  }
+  .wrapper-container {
+    flex-direction: column;
+    width: auto;
+    padding: 0;
+  }
+  .footer-main {
+    flex-direction: column;
+    margin: 0;
+  }
+  .hero {
+    margin: auto;
+    width: 75%;
+    flex-direction: column-reverse;
+  }
+  .wrapper-getinvolved {
+    flex-direction: column;
+  }
+  .getinvolved-img img {
+    height: 14rem;
+  }
+  .getinvolved-content {
+    width: 80%;
+  }
+
+  .slider {
+    width: 100%;
+  }
+  .card-details {
+    padding: 20px;
+    margin: 0;
+  }
+  .card img {
+    height: auto;
+  }
+}
 @media screen and (max-width: 900px) {
   .wrapper .carousel {
     grid-auto-columns: calc((100% / 2) - 9px);
   }
 }
 
-@media screen and (max-width: 600px) {
-  .wrapper .carousel {
-    grid-auto-columns: 100%;
-  }
-}
-
-/* responsive */
-
-/* @media only screen and (min-width: 576px) {
-}
-@media only screen and (max-width: 576px) {
-} */
 @media only screen and (max-width: 768px) {
   /* new css starts */
   .main-container-menu-resp {
@@ -682,76 +757,6 @@ nav button.logout-icon a {
   }
 }
 
-@media only screen and (max-width: 992px) {
-  .wrapper-container {
-    flex-direction: column;
-    width: auto;
-    padding: 0;
-  }
-  .footer-main {
-    flex-direction: column;
-    margin: 0;
-  }
-  .hero {
-    margin: auto;
-    width: 75%;
-    flex-direction: column-reverse;
-  }
-  .wrapper-getinvolved {
-    flex-direction: column;
-  }
-  .getinvolved-img img {
-    height: 14rem;
-  }
-  .getinvolved-content {
-    width: 80%;
-  }
-
-  .slider {
-    width: 100%;
-  }
-  .card-details {
-    padding: 20px;
-    margin: 0;
-  }
-  .card img {
-    height: auto;
-  }
-}
-@media only screen and (max-width: 1200px) {
-}
-@media only screen and (max-width: 1400px) {
-}
-
-/* Add this CSS code at the end of your existing CSS code */
-.menu-btn-open ul {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #f9f9f9;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  padding: 10px 0;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.menu-btn-open ul li {
-  margin: 5px 0;
-}
-
-.menu-btn-open.show ul {
-  opacity: 1;
-  visibility: visible;
-}
-
-#nav-icon-bar {
-  display: block;
-}
-
 /* Add this CSS code at the end of your existing CSS code */
 @media only screen and (max-width: 768px) {
   /* .menu-btn-open .main-container-menu {
@@ -771,20 +776,8 @@ nav button.logout-icon a {
     display: block;
   }
 }
-
-/* sdfds */
-#nav-icon-x {
-  display: none;
-  position: absolute;
-  top: 5%;
-  right: 3%;
-  cursor: pointer;
-}
-
-.menu-btn-open-resp #nav-icon-x {
-  display: block;
-}
-
-.menu-btn-open-resp .nav-icon-bar {
-  display: none;
+@media screen and (max-width: 600px) {
+  .wrapper .carousel {
+    grid-auto-columns: 100%;
+  }
 }

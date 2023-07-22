@@ -25,6 +25,7 @@
             </div>
 
             <ul class="main-container-menu menu-btn-open">
+                <li><a href="#products">Products</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#getinvolved">Get Involved</a></li>
                 <li><a href="#whoweare">Who We Are</a></li>
@@ -40,6 +41,8 @@
                 </ul>
             </div>
             <button class="nav-btn">Donate</button>
+            <button onclick="logoutBtn()" class="nav-btn logout-icon"><a href="./Register.html">Logout <i
+                        class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
             <i class="fa-solid fa-bars nav-icon-bar" id="nav-icon-bar"></i>
 
         </nav>
@@ -68,9 +71,88 @@
             </div>
         </div>
     </section>
+
+    <section id="products">
+        <div class="products-heading">
+            <h1>Our Products</h1>
+        </div>
+        <div class="card-wrapper">
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product1.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product2.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product1.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product2.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product1.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product2.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+
+
+        </div>
+    </section>
+
+
     <section id="services">
 
-        <h2>Our Services</h2>
+        <div class="main-service">
+            <h2 id="services-heading">Our Services</h2>
+            <section class="animation">
+                <div class="first">
+                    <div>Pawsitive Health</div>
+                </div>
+                <div class="second">
+                    <div>From Meows to High Fives</div>
+                </div>
+                <div class="third">
+                    <div>Pampered Paws</div>
+                </div>
+            </section>
+        </div>
         <div class="wrapper-container">
 
             <div class="card-details">
@@ -158,7 +240,7 @@
                     attention they deserve. Through our comprehensive services, including cat sitting, veterinary care,
                     premium cat food, and dedicated cat rescue efforts, we strive to create a harmonious and thriving
                     community of happy, healthy cats and their devoted human companions.</p>
-                <h3>Few of the our subscribers</h3>
+                <h3>Few of the our subscribers :</h3>
             </div>
             <div class="slider">
 
@@ -204,18 +286,20 @@
         </div>
     </section>
     <section id="contact">
+
         <div class="subscribe">
             <h1>Subscribe NewsLetter & Get Purr-fect News</h1>
             <!-- <span><input type="email" placeholder="Enter your E-mail Address"><button>Subscribe Now</button></span> -->
-            <span>
+            <div class="subscribe-form">
                 <form action="https://formspree.io/f/xaygyjzy" method="POST">
                     <label>
                         Your email:
-                        <input type="email" name="email">
+                        <input type="email" name="email" placeholder="Enter your email">
                     </label>
 
                     <button type="submit">Subscribe now</button>
                 </form>
+            </div>
         </div>
         <div class="footer-main">
             <div class="footer1">
@@ -319,6 +403,57 @@
     </script> -->
 
     <script>
+        // protected routing code starts
+
+        // Function to check if the user is authenticated (logged in)
+        function isAuthenticated() {
+            console.log("hehehehe2:")
+            // Replace this logic with your actual authentication check
+            // For example, you can check if the user is logged in by verifying if there is a valid token in local storage
+            const token = localStorage.getItem('authToken');
+            console.log('check', token)
+            return token !== null && token !== undefined;
+        }
+
+        // Function to redirect to the login page if the user is not authenticated
+        function redirectToLogin() {
+            console.log("hehehehe23:")
+            // Replace "Login.html" with the actual URL of your login page
+            window.location.href = './Register.html';
+        }
+
+        // Function to handle the protective routing for the home page
+        function protectHomePage() {
+            console.log("hehehehe4:")
+            if (!isAuthenticated()) {
+
+                redirectToLogin();
+            }
+        }
+
+        // On loading the home page, check if the user is authenticated
+        window.onload = function () {
+            // console.log("hehehehe:5", window.location.pathname) // /D:/Function%20up/Frontend/HTMLCSS%20javascript/Petcare%20project%20mern/Petcare/index.html
+            const filename = window.location.pathname.split("/").pop();
+            console.log("Filename:", filename);
+            if (filename === "index.html") {
+                console.log("hehehe")
+                protectHomePage();
+            }
+        };
+
+        // protected routing code ends
+
+
+        // logout starts
+        function logoutBtn() {
+            console.log("logout btn");
+            localStorage.removeItem('authToken');
+            window.location.href = './Register.html';
+        };
+        // logout ends
+
+
         // Get references to the necessary elements
         const mobileBtn = document.getElementById("nav-icon-bar");
         const mobileBtnExit = document.getElementById("nav-icon-x");

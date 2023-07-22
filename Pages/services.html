@@ -120,6 +120,52 @@
             <img src="../Assets/cat-eating.jpg" alt="cat-eat">
         </div>
     </section>
+    <script>
+
+        console.log("object", window.location)
+        console.log("object", window.location.href)
+        // protected routing code starts
+
+        // Function to check if the user is authenticated (logged in)
+        function isAuthenticated() {
+            console.log("hehehehe2:")
+            // Replace this logic with your actual authentication check
+            // For example, you can check if the user is logged in by verifying if there is a valid token in local storage
+            const token = localStorage.getItem('authToken');
+            console.log('check', token)
+            return token !== null && token !== undefined;
+        }
+
+        // Function to redirect to the login page if the user is not authenticated
+        function redirectToLogin() {
+            console.log("hehehehe23:")
+            // Replace "Login.html" with the actual URL of your login page
+            console.log("object", window.location.href)
+            window.location.href = './../Register.html';
+        }
+
+        // Function to handle the protective routing for the home page
+        function protectHomePage() {
+            console.log("hehehehe4:")
+            if (!isAuthenticated()) {
+
+                redirectToLogin();
+            }
+        }
+
+        // On loading the home page, check if the user is authenticated
+        window.onload = function () {
+            // console.log("hehehehe:5", window.location.pathname) // /D:/Function%20up/Frontend/HTMLCSS%20javascript/Petcare%20project%20mern/Petcare/index.html
+            const filename = window.location.pathname.split("/").pop();
+            console.log("Filename:", filename);
+            if (filename === "services.html") {
+                console.log("hehehe")
+                protectHomePage();
+            }
+        };
+
+        // protected routing code ends
+    </script>
 </body>
 
 </html>

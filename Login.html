@@ -6,27 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="./register.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 
 <body>
 
-    <h4>Purrfect Homes | Nurture. We Care. Cat Care. Join Us Meow!</h4>
-    <h1>Login</h1>
+
 
     <div class="register-container">
 
         <div class="register-image">
-            <img src="./Assets/2.jpg" alt="register cute cat">
+            <img src="./Assets/1.jpg" alt="register cute cat">
         </div>
         <div class="register-form">
-            <form action="">
-                <input type="email" placeholder="Enter your Email">
-                <input type="password" placeholder="Enter your password">
-                <button type="submit" onclick="loginUser()"><a href="./index.html">Login</a></button>
-                <p>Not a user? <span><a href="./Register.html">Login</a></span></p>
+
+            <form id="loginForm" action="">
+                <h5>Purrfect Homes | Nurture. We Care. Cat Care. Lets meet Meow!</h5>
+                <h1>Login</h1>
+                <input type="email" id="email" autocomplete="off" autofocus placeholder="Enter your Email">
+                <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
+                <button type="submit" onclick="loginUser()"><a href="#">Login</a></button>
+                <p>Not a user? <span><a href="./Register.html">Register</a></span></p>
             </form>
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script>
 
@@ -36,21 +62,47 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
+            console.log("email ;;", email)
+            console.log("password ;;", password)
             try {
                 const response = await axios.post('http://localhost:8080/api/auth', { email, password });
                 console.log(response, "login api");
 
                 // Handle the response from the API
-                const users = response.data;
-                if (response.status === 201) {
-                    localStorage.setItem('token', response.data.token);
-                    alert('Login successfully!');
+                if (response.status === 200) {
+                    // swal('Registered successfully!');
+                    console.log("Login successfully!", response.data.data)
+                    localStorage.setItem('authToken', JSON.stringify(response.data.data));
+                    // alert('Login successfully!');
+                    // swal({
+                    //     title: "Me job!",
+                    //     text: "You clicked the button!",
+                    //     icon: "success",
+                    //     button: "Aww yiss!",
+                    // });
+                    swal({
+                        title: "Me job!",
+                        text: "You clicked the button!",
+                        icon: "success",
+                        button: "Aww yiss!",
+                    }).then(() => {
+                        // Redirect to the login page after displaying the sweet alert
+                        document.getElementById('loginForm').reset();
+                        window.location.href = './index.html';
+                    });
+
+                    // console.log(response, "rrrrr")
+                    // document.getElementById('loginForm').reset();
+                    // window.location.href = './index.html';
                 } else {
-                    alert('Email or password is wrong.');
+                    alert(error.response.data.message)
+                    alert(response)
+                    alert('Registration failed. Please try again.');
                 }
 
             } catch (error) {
-                console.log(error);
+                alert(error.response.data.message);
+                console.error("errror from catch while login", error);
             }
         }
 

@@ -12,32 +12,78 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Sweetalert cdn -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+   
 
 </head>
 
 <body>
 
-    <h4>Purrfect Homes | Nurture. We Care. Cat Care. Join Us Meow!</h4>
-    <h1>Register</h1>
 
-    <div class="register-container">
+
+    <!-- <div class="register-container">
 
         <div class="register-image">
             <img src="./Assets/2.jpg" alt="register cute cat">
         </div>
         <div class="register-form">
-            <form action="">
-                <input id="firstName" type="text" placeholder="Enter your First Name">
-                <input id="lastName" type="text" placeholder="Enter your Last Name">
-                <input id="email" type="email" placeholder="Enter your Email">
-                <input id="password" type="password" placeholder="Enter your password">
-                <button type="submit" onclick="registerUser()"><a href="./Login.html">Register</a></button>
+
+            <form id="registrationForm" action="">
+                <h5>Purrfect Homes | Nurture. We Care. Cat Care. Join Us Meow!</h5>
+                <h1>Register</h1>
+                <input id="firstName" type="text" placeholder="Enter your First Name" autofocus autocomplete="off">
+                <input id="lastName" type="text" placeholder="Enter your Last Name" autocomplete="off">
+                <input id="email" type="email" placeholder="Enter your Email" autocomplete="off">
+                <input id="password" type="password" placeholder="Enter your password" autocomplete="off">
+                <button type="submit" onclick="registerUser()"><a href="#">Register</a></button>
                 <p>Already a user? <span><a href="./Login.html">Login</a></span></p>
             </form>
         </div>
+    </div> -->
+
+
+    <div class="register-wrapper">
+        <div class="register-container">
+            <div class="register-image">
+                <img src="./Assets/2.jpg" alt="register cute cat">
+            </div>
+            <div class="register-form">
+
+                <form id="registrationForm" action="">
+                    <h5>Purrfect Homes | Nurture. We Care. Cat Care. Join Us Meow!</h5>
+                    <h1>Register</h1>
+                    <input id="firstName" type="text" placeholder="Enter your First Name" autofocus autocomplete="off">
+                    <input id="lastName" type="text" placeholder="Enter your Last Name" autocomplete="off">
+                    <input id="email" type="email" placeholder="Enter your Email" autocomplete="off">
+                    <input id="password" type="password" placeholder="Enter your password" autocomplete="off">
+                    <button type="submit" onclick="registerUser()"><a href="#">Register</a></button>
+                    <p>Already a user? <span><a href="./Login.html">Login</a></span></p>
+                </form>
+            </div>
+
+        </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -55,35 +101,43 @@
         async function registerUser() {
             console.log("heheh")
             const firstName = document.getElementById('firstName').value;
-            // console.log(firstName, "firstName")
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
             try {
-                const response = await axios.post('http://localhost:8080/api/users', { firstName, lastName, email, password });
-                // console.log(response, "sdf");
-
+                let response = await axios.post('http://localhost:8080/api/users', { firstName, lastName, email, password });
                 // Handle the response from the API
                 const users = response.data;
                 if (response.status === 201) {
-                    localStorage.getItem('token', response.data.token);
-                    alert('Registered successfully!');
+                    console.log("user createddddd", response.data)
+                    localStorage.setItem('userToken', JSON.stringify(response.data));
+                    // Clear the input fields after successful registration
+                    // document.getElementById('firstName').value = '';
+                    // document.getElementById('lastName').value = '';
+                    // document.getElementById('email').value = '';
+                    // document.getElementById('password').value = '';
+                    // swal('Registered successfully!');
+                    swal({
+                        title: "Registration successful!",
+                        icon: "success",
+                    }).then(() => {
+                        // Redirect to the login page after displaying the sweet alert
+                        document.getElementById('registrationForm').reset();
+                        window.location.href = './Login.html';
+                    });
+                    // document.getElementById('registrationForm').reset();
+                    // window.location.href = './Login.html';
                 } else {
-                    alert('Registration failed. Please try again.');
+                    console.log("problem", response)
+                    swal('Registration failed. Please try again.');
                 }
-
-                // Display the products in the product grid
-                // displayProducts(products);
             } catch (error) {
-                console.error(error);
+                // console.log("error rr", error.response.data.message)
+                swal(error.response.data.message);
+                console.error("errror from catch while registering the user", error);
             }
         }
-        // getProducts();
-
-
-
-
     </script>
 </body>
 

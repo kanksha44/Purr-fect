@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 #main-container {
   /* border: 1px red solid; */
-
   width: 100%;
 }
 #main-container img {
@@ -33,14 +34,30 @@ nav ul li {
 }
 nav ul li a {
   text-decoration: none;
+  color: #000;
+  /* border: 1px solid black;
+  padding: 12px;
+  border-radius: 5px; */
+  transition: 0.5s ease;
+}
+nav ul li a:hover {
+  color: #ff9800;
+  border: 1px solid black;
+  padding: 12px;
+  border-radius: 5px;
+  transition: 0.5s ease;
 }
 nav button {
   border: none;
-  background-color: #eac715;
+  background-color: #ff9800;
   padding: 12px 30px;
   border-radius: 5px;
   color: white;
   margin: 10px;
+}
+nav button:hover {
+  scale: 1.2;
+  transition: 0.5s ease;
 }
 
 nav #nav-icon-bar {
@@ -49,6 +66,11 @@ nav #nav-icon-bar {
 
 nav .nav-icon-x {
   display: none;
+}
+
+nav button.logout-icon a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .hero {
@@ -76,17 +98,17 @@ nav .nav-icon-x {
 }
 .hero-btn button {
   border: none;
-  background-color: #9236c1;
+  background-color: #ff9800;
   padding: 12px 30px;
   border-radius: 5px;
   color: white;
   margin: 10px;
   transform: scale(1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: transform 1sec ease;
+  transition: transform 5sec ease;
 }
 .hero-btn button:hover {
-  background-color: #cc9be4;
+  background-color: #ffd500;
   transform: scale(1.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
@@ -95,15 +117,58 @@ nav .nav-icon-x {
   color: white;
 }
 
+/* Products */
+.products-heading {
+  text-align: center;
+  font-size: 2.2rem;
+}
+.card-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: auto;
+  align-items: stretch;
+  padding: 25px 0;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.card-box {
+  /* border: 1px solid black; */
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap; */
+  flex-basis: 30%;
+  margin: 10px 0;
+}
+.card-box .card-images img {
+  height: 200px;
+}
+.card-title {
+  margin: 10px 0;
+}
+.card-box button {
+  padding: 12px;
+  margin: 10px;
+  background-color: #ff9800;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
 /* services */
 
 #services {
+  background-color: #eee3d3;
+
   /* border: 1px red solid; */
 }
 #services h2 {
   font-size: 2.5rem;
   text-align: center;
   padding: 5px 0;
+  color: black;
 }
 .wrapper-container {
   /* border: 1px red solid; */
@@ -142,7 +207,7 @@ nav .nav-icon-x {
 }
 .card button {
   border: none;
-  background-color: #eac715;
+  background-color: #ff9800;
   padding: 12px 30px;
   border-radius: 5px;
   color: white;
@@ -150,6 +215,7 @@ nav .nav-icon-x {
 }
 .card-content button a {
   text-decoration: none;
+  color: white;
 }
 
 /* contact */
@@ -175,24 +241,30 @@ nav .nav-icon-x {
   font-size: 2.2rem;
   margin: 1rem 0;
 }
-.subscribe span {
+.subscribe .subscribe-form {
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.subscribe span input {
-  width: 40%;
-  border-radius: 1rem;
+.subscribe .subscribe-form input {
+  width: 30%;
+  border-radius: 0.4rem;
   height: 40px;
+  text-align: center;
 }
-.subscribe span button {
-  border-radius: 1rem;
-  width: 32%;
+.subscribe .subscribe-form form {
+  width: 100%;
+  text-align: center;
+}
+.subscribe .subscribe-form button {
+  border-radius: 0.4rem;
+  width: 10%;
   height: 40px;
-  background-color: #eac715;
+  background-color: #ff9800;
   color: white;
+  cursor: pointer;
 }
 
 .footer-main {
@@ -260,15 +332,30 @@ nav .nav-icon-x {
   width: 100%;
   padding: 20px 0;
   text-align: center;
-  filter: blur(3px);
+  /* filter: blur(3px); */
   transition: filter 0.8s ease;
 }
 .getinvolved-img img {
   height: 25rem;
   border-radius: 0.8rem;
+  animation-name: piccat;
+  animation-duration: 2s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
+@keyframes piccat {
+  from {
+    border-radius: 0%;
+  }
+
+  to {
+    border-radius: 50%;
+  }
+}
+
 .getinvolved-img:hover {
-  filter: blur(0);
+  /* filter: blur(0); */
 }
 .getinvolved-content {
   width: 100%;
@@ -278,12 +365,12 @@ nav .nav-icon-x {
   padding: 10px 0;
 }
 .getinvolved-content p {
-  padding: 10px 0;
+  padding: 20px;
 }
 
 /* who we are */
 #whoweare {
-  background: linear-gradient(to left top, #eac715, #8b53ff);
+  background-color: #eee3d3;
 }
 
 .wrapper-whoweare {
@@ -303,6 +390,9 @@ nav .nav-icon-x {
   font-size: 2.3rem;
   margin-bottom: 25px;
 }
+.whoweare-content h1 {
+  padding: 15px 0;
+}
 /* slider */
 /* Import Google font - Poppins */
 
@@ -311,7 +401,7 @@ nav .nav-icon-x {
   padding: 0 35px;
   align-items: center;
   justify-content: center;
-  min-height: 50vh;
+  min-height: 40vh;
   /* background: linear-gradient(to left top, #031a9a, #8b53ff); */
 }
 .wrapper {
@@ -384,7 +474,7 @@ nav .nav-icon-x {
   border-radius: 8px;
 }
 .carousel .card .img {
-  background: #eac715;
+  background: #ff9800;
   height: 148px;
   width: 148px;
   border-radius: 50%;
@@ -406,8 +496,83 @@ nav .nav-icon-x {
 #scrollToTopBtn {
   position: absolute;
   bottom: 5%;
-
   right: 5%;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Apply the shadow effect */
+}
+
+#services-heading h1 {
+  text-shadow: 0 0 7px rgba(58, 57, 57, 0.3), 0 0 3px rgba(67, 64, 64, 0.3);
+}
+.main-service {
+  color: #e5e5e5;
+  font-size: 2.26rem;
+  text-transform: uppercase;
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+.animation {
+  height: 50px;
+  overflow: hidden;
+  margin-left: 1rem;
+}
+.animation > div > div {
+  padding: 0.25rem 0.75rem;
+  height: 2.81rem;
+  margin-bottom: 2.81rem;
+  display: inline-block;
+}
+
+.animation div:first-child {
+  animation: text-animation 8s infinite;
+}
+
+.first div {
+  background-color: #2cc4fb;
+}
+.second div {
+  background-color: #ffaa00;
+}
+.third div {
+  background-color: #ff224b;
+}
+
+@keyframes text-animation {
+  0% {
+    margin-top: 0;
+  }
+  10% {
+    margin-top: 0;
+  }
+  20% {
+    margin-top: -5.62rem;
+  }
+  30% {
+    margin-top: -5.62rem;
+  }
+  40% {
+    margin-top: -11.24rem;
+  }
+  60% {
+    margin-top: -11.24rem;
+  }
+  70% {
+    margin-top: -5.62rem;
+  }
+  80% {
+    margin-top: -5.62rem;
+  }
+  90% {
+    margin-top: 0;
+  }
+  100% {
+    margin-top: 0;
+  }
 }
 
 @media screen and (max-width: 900px) {

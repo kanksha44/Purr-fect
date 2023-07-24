@@ -6,7 +6,13 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-
+#main-container {
+  width: 100%;
+}
+.btn-batch {
+  display: flex;
+  align-items: center;
+}
 /* navbar css */
 .menu-btn-open ul {
   display: flex;
@@ -21,6 +27,9 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+#cart-icon {
+  color: #1c1c1c;
 }
 
 .menu-btn-open ul li {
@@ -52,9 +61,6 @@
   display: none;
 }
 
-#main-container {
-  width: 100%;
-}
 #main-container img {
   height: 4rem;
   width: 4rem;
@@ -159,9 +165,9 @@ nav button.logout-icon a {
 
 /* Products */
 
-.products-heading {
+.products-heading h1 {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 40px;
 }
 .card-wrapper {
   display: flex;
@@ -210,13 +216,13 @@ nav button.logout-icon a {
   color: black;
 }
 .wrapper-container {
-  width: 1170px;
+  /* width: 1170px; */
   margin: auto;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: stretch;
-  padding: 25px 0;
+  padding: 5px 0;
 }
 .card-details {
   flex-basis: 30%;
@@ -265,6 +271,9 @@ nav button.logout-icon a {
   justify-content: center;
   align-items: center;
 }
+.subscribe-form {
+  width: 70%;
+}
 .subscribe {
   width: 100%;
   display: flex;
@@ -273,11 +282,14 @@ nav button.logout-icon a {
   flex-direction: column;
   margin: 1rem 0;
 }
+.subscribe-form form label {
+  width: 100%;
+}
 .subscribe h1 {
   font-size: 2.2rem;
   margin: 1rem 0;
 }
-.subscribe .subscribe-form {
+.subscribe form {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -285,7 +297,7 @@ nav button.logout-icon a {
   align-items: center;
 }
 .subscribe .subscribe-form input {
-  width: 30%;
+  width: 100%;
   border-radius: 0.4rem;
   height: 40px;
   text-align: center;
@@ -296,7 +308,7 @@ nav button.logout-icon a {
 }
 .subscribe .subscribe-form button {
   border-radius: 0.4rem;
-  width: 10%;
+  width: 20%;
   height: 40px;
   background-color: #ff9800;
   color: white;
@@ -389,7 +401,7 @@ nav button.logout-icon a {
   line-height: 2.5rem;
 }
 .getinvolved-content h1 {
-  padding: 10px 0;
+  padding: 10px;
 }
 .getinvolved-content p {
   padding: 20px;
@@ -540,7 +552,7 @@ nav button.logout-icon a {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 0;
+  padding-top: 15px;
 }
 .animation {
   height: 50px;
@@ -601,10 +613,14 @@ nav button.logout-icon a {
   }
 }
 
-
 /* responsive */
+@media screen and (max-width: 1200px) {
+  #scrollToTopBtn {
+    right: 2%;
+  }
+}
 
-@media only screen and (max-width: 992px) {
+@media screen and (max-width: 992px) {
   .donate-btn {
     display: none;
   }
@@ -619,15 +635,13 @@ nav button.logout-icon a {
   }
   .hero {
     margin: auto;
-    width: 75%;
+    width: 100%;
     flex-direction: column-reverse;
   }
   .wrapper-getinvolved {
     flex-direction: column;
   }
-  .getinvolved-img img {
-    height: 14rem;
-  }
+
   .getinvolved-content {
     width: 80%;
   }
@@ -642,18 +656,54 @@ nav button.logout-icon a {
   .card img {
     height: auto;
   }
+  .main-container-menu li {
+    padding: 10px 5px;
+  }
 }
 @media screen and (max-width: 900px) {
   .wrapper .carousel {
     grid-auto-columns: calc((100% / 2) - 9px);
   }
 }
+/* @media screen and (max-width: 802px) {
+  #services h2 {
+    font-size: 2rem;
+  }
+  .animation {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 869px) {
+  .nav ul li a{
+    padding: 0 8px;
+  }
+  #main-container img {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+} */
 
 @media only screen and (max-width: 768px) {
+  /* .cart-container {
+    display: none;
+  }
+  .cart-container-resp {
+    display: block;
+  } */
   .main-container-menu-resp {
     display: none;
   }
+  .btn-batch .logout-icon {
+    padding: 10px 7px;
+  }
 
+  #services h2 {
+    font-size: 25px;
+  }
+  .main-service {
+    margin: 0 15px;
+    font-size: 25px;
+  }
   .menu-btn-open {
     display: block;
     color: #9236c1;
@@ -709,10 +759,10 @@ nav button.logout-icon a {
     padding: 10px;
     cursor: pointer;
   }
-  .hero {
+  /* .hero {
     margin: auto;
-    width: 55%;
-  }
+    width: 100%;
+  } */
   .hero-content h1 {
     font-size: 2rem;
   }
@@ -738,6 +788,9 @@ nav button.logout-icon a {
   .menu-btn-open .nav-btn {
     display: none;
   }
+  .logout-icon {
+    display: flex !important;
+  }
 
   .nav-icon-x {
     display: block;
@@ -753,4 +806,26 @@ nav button.logout-icon a {
   .wrapper .carousel {
     grid-auto-columns: 100%;
   }
+  .card-box {
+    flex-basis: 40%;
+  }
+  .subscribe form {
+    flex-direction: column;
+  }
+  .subscribe .subscribe-form button {
+    width: 33%;
+  }
+  #services h2 {
+    font-size: 17px;
+  }
+}
+
+.card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subscribe label {
+  margin: 10px;
 }

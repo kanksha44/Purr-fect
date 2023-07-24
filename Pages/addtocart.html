@@ -31,21 +31,81 @@
             color: green;
         }
 
-      
+        .backbtn button {
+            border: none;
+            background-color: #ff9800;
+            padding: 12px 30px;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        .backbtn button a {
+            text-decoration: none;
+            color: white;
+
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container-fluid">
+        <div class="backbtn">
+            <button><a href="../index.html">Go back</a></button>
+        </div>
         <div class="row">
-            <div class="cartproduct">
-                <div class="container">
-                    <h1>Product Catalog</h1>
-                    <div class="row" id="product-grid"></div>
+            <div class="col-sm-8 col-md-8 col-lg-8  text-start  cartproduct">
+                <div class="d-flex justify-content-between">
+                    <h1 class="py-4">Cart Items</h1>
+                    <h1 class="py-4">Total Count : <span id="total-count">0</span></h1>
                 </div>
+                <div class="row" id="product-grid"></div>
             </div>
-            <div class="totalcart">
+            <div class="col col-sm-4 justify-content-between border totalcart">
                 <!-- The cart content will be displayed here -->
+                <div class="container text-center border">
+                    <h1 class="py-4">Summary</h1>
+                </div>
+                <div class="container" id="summary-content"></div>
+                <!-- <div class="container">
+                    <div class="row border" id="product-total">
+                        <div class="col-6 product-summary">
+                            <div class="product-bill">
+                                <div class="product-name">
+                                    `${product.name}`
+                                </div>
+                                <div class="product-price">
+                                    quantity
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="product-bill">
+                                <div class="product-name">
+                                    `${product price}`
+                                </div>
+                                <div class="product-price">
+                                    `${product quantity}`
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col border-top">
+                            <div class="product-toatl row">
+                                <div class="col-6">Total</div>
+                                <div class="col-6">121</div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="container">
+                    <div class="row border" id="product-total">
+                        <div class="col border-top">
+                            <div class="product-toatl row">
+                                <div class="col-6 ">Grand Total</div>
+                                <div class="col-6 grandtotal">1210</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -128,6 +188,29 @@
                 const card = createProductCard(product);
                 productGrid.appendChild(card);
             });
+
+
+
+
+            // Initialize an empty array to store summary elements
+            const summaryElements = [];
+
+            // Loop through each product and create a summary element for it
+            products.forEach(product => {
+                const summaryElement = createSummaryElement(product);
+                summaryElements.push(summaryElement);
+            });
+
+            // Get the summary container element
+            const summaryContainer = document.getElementById('summary-content');
+
+            // Clear any existing content in the summary container
+            summaryContainer.innerHTML = '';
+
+            // Append each summary element to the summary container
+            summaryElements.forEach(summaryElement => {
+                summaryContainer.appendChild(summaryElement);
+            });
         }
 
         // Function to add a product to the cart
@@ -144,13 +227,161 @@
             }
         }
 
+        // Function to update the total count in the header
+        function updateTotalCount(count) {
+            const totalCountElement = document.getElementById('total-count');
+            totalCountElement.textContent = count;
+        }
+
+
+        // Function to create a summary element for a product
+        function createSummaryElement(product) {
+
+
+
+            const summaryElement = document.createElement('div');
+            summaryElement.classList.add('row', 'border');
+
+
+
+
+            //1st col-6 ***** left side
+
+
+            // Create the product element
+            const productSummary = document.createElement('div');
+            productSummary.classList.add('col-6', 'product-summary');
+            // productSummary.textContent = product.productId.title;
+
+            // Create the product name element
+            const porductNamePrice = document.createElement('div');
+            porductNamePrice.classList.add('product-bill');
+            // porductNamePrice.textContent = product.productId.title;
+
+            // Create the product name element
+            const productTitle = document.createElement('div');
+            productTitle.classList.add('product-name');
+            productTitle.textContent = product.productId.title;
+
+            // Create the product name element
+            const productQtyHardCoded = document.createElement('div');
+            productQtyHardCoded.classList.add('product-quantity');
+            productQtyHardCoded.textContent = "Quantity";
+
+
+
+
+
+
+
+            //2nd col-6 ***** right side
+
+            // Create the product quantity element
+            const productPriceQtyDesc = document.createElement('div');
+            productPriceQtyDesc.classList.add('col-6');
+            // productPriceQtyDesc.textContent = product.quantity;
+
+
+            // Create the product name element
+            const porductPriceQty = document.createElement('div');
+            porductPriceQty.classList.add('product-bill');
+            // porductNamePrice.textContent = product.productId.title;
+
+            // Create the product name element
+            const productPrice = document.createElement('div');
+            productPrice.classList.add('product-price');
+            productPrice.textContent = product.productId.price;
+
+            // Create the product name element
+            const productQty = document.createElement('div');
+            productQty.classList.add('product-quantity');
+            productQty.textContent = product.quantity;
+
+
+
+
+            // 3rd col-12 == col (for total of each product)
+
+            // Create the product quantity element
+            const productTotalDesc = document.createElement('div');
+            productTotalDesc.classList.add('col', 'border-top');
+            // productTotalDesc.textContent = product.quantity;
+
+
+            // Create the product quantity element
+            const productTotalEach = document.createElement('div');
+            productTotalEach.classList.add('product-total', 'row');
+            // productTotalDesc.textContent = product.quantity;
+
+            // Create the product quantity element
+            const productTotalHardCoded = document.createElement('div');
+            productTotalHardCoded.classList.add('col-6');
+            productTotalHardCoded.textContent = "TOTAL"
+
+
+            // 4th col-6 2ndd part
+            // Create the product quantity element
+            const productTotal = document.createElement('div');
+            productTotal.classList.add('col-6');
+            productTotal.textContent = product.total
+
+            // productTotal.textContent = "total" // Use product.total here
+
+
+
+
+
+
+
+
+
+
+
+
+            // Append the elements to the summary element
+            summaryElement.appendChild(productSummary);
+            productSummary.appendChild(porductNamePrice)
+            porductNamePrice.appendChild(productTitle)
+            porductNamePrice.appendChild(productQtyHardCoded)
+
+
+
+            // 2nd col-6
+            summaryElement.appendChild(productPriceQtyDesc);
+            productPriceQtyDesc.appendChild(porductPriceQty)
+            porductPriceQty.appendChild(productPrice)
+            porductPriceQty.appendChild(productQty)
+
+
+            // 3rd
+            summaryElement.appendChild(productTotalDesc);
+            productTotalDesc.appendChild(productTotalEach);
+            productTotalEach.appendChild(productTotalHardCoded);
+            productTotalEach.appendChild(productTotal);
+
+
+            return summaryElement;
+        }
+
         // Make a request to the products API endpoint using Axios
         async function getProducts() {
             try {
                 const response = await axios.get('http://localhost:8080/api/products/addtocart/');
+                // console.log("productsdata", response)
                 const products = response.data.cartItems;
-                console.log("products", products)
+
+                // getCount = response.data.totalQuantity
+                const totalCount = response.data.totalQuantity; // Get the total count from the API response
+
+                // to get total count of each product
                 displayProducts(products);
+                updateTotalCount(totalCount); // Update the total count in the header 
+
+
+                // Update the Grand Total in the summary section
+                const grandTotalElement = document.querySelector('.grandtotal'); // Select the appropriate element
+                grandTotalElement.textContent = response.data.overallTotal; // Use overallTotal from the API response
+
             } catch (error) {
                 console.error(error);
             }

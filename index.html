@@ -23,8 +23,6 @@
 
 <body>
     <section class="topnav" id="main-container">
-
-
         <nav>
 
             <div class="logo"><img src="./Assets/catlogo.png" alt="cat">
@@ -38,23 +36,25 @@
                 <li><a href="#whoweare">Who We Are</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="sidebar-btn">
-                <ul class="main-container-menu-resp menu-btn-open-resp">
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#getinvolved">Get Involved</a></li>
-                    <li><a href="#whoweare">Who We Are</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <i class="fa-solid fa-xmark nav-icon-x" id="nav-icon-x"></i>
-                </ul>
+            <div class="btn-batch">
+                <div class="sidebar-btn">
+                    <ul class="main-container-menu-resp menu-btn-open-resp">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#getinvolved">Get Involved</a></li>
+                        <li><a href="#whoweare">Who We Are</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <i class="fa-solid fa-xmark nav-icon-x" id="nav-icon-x"></i>
+                    </ul>
+                </div>
+                <div class="cart-container">
+                    <a href="Pages/addtocart.html"><i class="fa-solid fa-shopping-cart" id="cart-icon"></i></a>
+                    <!-- <span id="cart-count">0</span> -->
+                </div>
+                <button class="nav-btn donate-btn">Donate</button>
+                <button onclick="logoutBtn()" class="nav-btn logout-icon"><a href="./Register.html">Logout <i
+                            class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
+                <i class="fa-solid fa-bars nav-icon-bar" id="nav-icon-bar"></i>
             </div>
-            <button class="nav-btn donate-btn">Donate</button>
-            <div class="cart-container">
-                <a href="Pages/addtocart.html"><i class="fa-solid fa-shopping-cart" id="cart-icon"></i></a>
-                <!-- <span id="cart-count">0</span> -->
-            </div>
-            <button onclick="logoutBtn()" class="nav-btn logout-icon"><a href="./Register.html">Logout <i
-                        class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
-            <i class="fa-solid fa-bars nav-icon-bar" id="nav-icon-bar"></i>
 
         </nav>
 
@@ -303,9 +303,7 @@
             <!-- <span><input type="email" placeholder="Enter your E-mail Address"><button>Subscribe Now</button></span> -->
             <div class="subscribe-form">
                 <form action="https://formspree.io/f/xaygyjzy" method="POST">
-                    <label>
-                        Your email:
-                        <input type="email" name="email" placeholder="Enter your email">
+                    <label><input type="email" name="email" placeholder="Enter your email">
                     </label>
 
                     <button type="submit">Subscribe now</button>
@@ -431,6 +429,12 @@
             counterIcon.textContent = counter.toString();
         }
 
+        async function getCountData() {
+            const getCount = await axios.get(`http://localhost:8080/api/products/addtocart`)
+            console.log("getCount ::", getCount)
+            counterIcon.textContent = getCount.data.totalQuantity
+        }
+        getCountData()
         // Function to toggle the counter between increase and decrease
         async function toggleCounter(productId, productName) {
             console.log("productId ::", productId)
@@ -439,18 +443,20 @@
             const addToCart = await axios.get(`http://localhost:8080/api/products/addtocart/${productId}`)
             // console.log(${})
             console.log(addToCart, "data")
+            getCountData()
 
-            if (increment) {
-                counter++;
-            } else {
-                counter--;
-            }
-            updateCounter();
+            // if (increment) {
+            //     counter++;
+            // } else {
+            //     counter--;
+            // }
+            // updateCounter();
             // increment = !increment; // Toggle the increment variable
         }
 
         // Call the updateCounter() function initially to display the initial value
-        updateCounter();
+        // updateCounter();
+
 
         //=================================================================================================
 

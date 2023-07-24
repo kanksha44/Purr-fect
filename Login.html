@@ -37,23 +37,6 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script>
 
 
@@ -70,21 +53,16 @@
 
                 // Handle the response from the API
                 if (response.status === 200) {
-                    // swal('Registered successfully!');
+                    // swal('Login successfully!');
                     console.log("Login successfully!", response.data.data)
                     localStorage.setItem('authToken', JSON.stringify(response.data.data));
                     // alert('Login successfully!');
-                    // swal({
-                    //     title: "Me job!",
-                    //     text: "You clicked the button!",
-                    //     icon: "success",
-                    //     button: "Aww yiss!",
-                    // });
+
                     swal({
-                        title: "Me job!",
-                        text: "You clicked the button!",
+                        title: "Login Succesfully!",
+                        text: "Meaw!",
                         icon: "success",
-                        button: "Aww yiss!",
+                        button: "Okay",
                     }).then(() => {
                         // Redirect to the login page after displaying the sweet alert
                         document.getElementById('loginForm').reset();
@@ -97,7 +75,7 @@
                 } else {
                     alert(error.response.data.message)
                     alert(response)
-                    alert('Registration failed. Please try again.');
+                    alert('Login failed. Please try again.');
                 }
 
             } catch (error) {

@@ -1,0 +1,9 @@
+.productcart {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+}
+.productcart img {
+  height: 100px;
+}

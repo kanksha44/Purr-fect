@@ -15,6 +15,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
         integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- sweet alert cdn -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <title>Purr-fect</title>
 </head>
@@ -47,7 +49,7 @@
             </div>
             <button class="nav-btn donate-btn">Donate</button>
             <div class="cart-container">
-                <i class="fa-solid fa-shopping-cart" id="cart-icon"></i>
+                <a href="Pages/addtocart.html"><i class="fa-solid fa-shopping-cart" id="cart-icon"></i></a>
                 <!-- <span id="cart-count">0</span> -->
             </div>
             <button onclick="logoutBtn()" class="nav-btn logout-icon"><a href="./Register.html">Logout <i
@@ -430,7 +432,14 @@
         }
 
         // Function to toggle the counter between increase and decrease
-        function toggleCounter() {
+        async function toggleCounter(productId, productName) {
+            console.log("productId ::", productId)
+            console.log("productName ::", productName)
+            swal(`${productName} Added to the cart!`);
+            const addToCart = await axios.get(`http://localhost:8080/api/products/addtocart/${productId}`)
+            // console.log(${})
+            console.log(addToCart, "data")
+
             if (increment) {
                 counter++;
             } else {
@@ -452,7 +461,7 @@
             .get("http://localhost:8080/api/products")
             .then(function (response) {
                 // Loop through products
-                // console.log("response", response)
+                console.log("response", response)
                 response.data.product.forEach((product) => {
                     // Create a product card element
                     const productwrapper = document.createElement("div");
@@ -466,7 +475,7 @@
             <h5 class="card-title">${product.title}</h5>
             <p class="card-text">${product.description}</p>
             <p class="price">$${product.price.toFixed(2)}</p>
-            <button onclick="toggleCounter()">Add to Cart</button>
+            <button onclick="toggleCounter('${product._id}','${product.title}')">Add to Cart</button>
           </div>
         </div>
       `

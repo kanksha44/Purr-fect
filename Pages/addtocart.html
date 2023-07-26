@@ -4,14 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- axios cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
         integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <title>Add To Cart</title>
     <style>
-        /* CSS styles for product cards */
         .product-card {
             margin-bottom: 10px;
         }
@@ -32,11 +37,27 @@
         }
 
         .backbtn button {
-            border: none;
+            border: 1px solid white;
             background-color: #ff9800;
             padding: 12px 30px;
             border-radius: 5px;
             margin: 10px;
+            font-size: 12px;
+        }
+
+        .backbtn {
+            background-color: #ff9800;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        .backbtn h5 {
+            padding: 12px 30px;
+            color: white;
+
+
         }
 
         .backbtn button a {
@@ -48,10 +69,12 @@
 </head>
 
 <body>
+    <div class="backbtn">
+        <h5>Add to Cart <i class="fa-solid fa-cart-shopping fa-flip"></i></h5>
+        <button><a href="../index.html">Go back</a></button>
+    </div>
     <div class="container-fluid">
-        <div class="backbtn">
-            <button><a href="../index.html">Go back</a></button>
-        </div>
+
         <div class="row">
             <div class="col-sm-8 col-md-8 col-lg-8  text-start  cartproduct">
                 <div class="d-flex justify-content-between">
@@ -61,7 +84,7 @@
                 <div class="row" id="product-grid"></div>
             </div>
             <div class="col col-sm-4 justify-content-between border totalcart">
-                <!-- The cart content will be displayed here -->
+
                 <div class="container text-center border">
                     <h1 class="py-4">Summary</h1>
                 </div>
@@ -114,43 +137,41 @@
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
     <script>
-        // Function to create a product card element
+
         function createProductCard(product) {
             console.log("products cp", product.productId.title)
 
-            // Create the card element
+
             const card = document.createElement('div');
             card.classList.add('col-sm-6', 'col-md-4', 'col-lg-3', 'product-card');
 
-            // Create the card body
+
             const cardBody = document.createElement('div');
             cardBody.classList.add('card', 'h-100');
 
-            // Create the image element
+
             const image = document.createElement('img');
             image.classList.add('card-img-top');
             image.src = product.productId.image;
 
-            // Create the card content
+
             const cardContent = document.createElement('div');
             cardContent.classList.add('card-body');
 
-            // Create the product name element
+
             const name = document.createElement('h4');
             name.classList.add('card-title');
             name.textContent = product.productId.title;
 
-            // Create the product price element
+
             const price = document.createElement('p');
             price.classList.add('card-text', 'price');
             price.textContent = `$${(product.productId.price * product.quantity).toFixed(2)}`;
 
-            // Create the product price element
             const quantity = document.createElement('p');
             quantity.classList.add('card-text', 'quantity');
             quantity.textContent = product.quantity;
 
-            // Create the button element
             const removeCartItem = document.createElement('button');
             removeCartItem.classList.add('btn', 'btn-danger');
             removeCartItem.textContent = 'Remove Item';
@@ -158,31 +179,26 @@
                 removeItem(product.productId._id);
             });
 
-            // Append the elements to the card body
             cardBody.appendChild(image);
             cardContent.appendChild(name);
             cardContent.appendChild(price);
             cardContent.appendChild(quantity);
             cardBody.appendChild(cardContent);
-            // Append the button to the card content
+
             cardContent.appendChild(removeCartItem);
             card.appendChild(cardBody);
 
             return card;
         }
 
-        // Function to display the products
+
         function displayProducts(products) {
             console.log("products dp", products)
 
-            // Get the product grid element
-
             const productGrid = document.getElementById('product-grid');
 
-            // Clear the product grid
             productGrid.innerHTML = '';
 
-            // Loop through each product and create a card element to display it
             products.forEach(product => {
                 console.log("products foreach", products)
                 const card = createProductCard(product);
@@ -192,33 +208,26 @@
 
 
 
-            // Initialize an empty array to store summary elements
             const summaryElements = [];
 
-            // Loop through each product and create a summary element for it
             products.forEach(product => {
                 const summaryElement = createSummaryElement(product);
                 summaryElements.push(summaryElement);
             });
 
-            // Get the summary container element
             const summaryContainer = document.getElementById('summary-content');
 
-            // Clear any existing content in the summary container
             summaryContainer.innerHTML = '';
 
-            // Append each summary element to the summary container
             summaryElements.forEach(summaryElement => {
                 summaryContainer.appendChild(summaryElement);
             });
         }
 
-        // Function to add a product to the cart
         async function removeItem(productId) {
             console.log('Remove Item from Cart:', productId);
             try {
                 const deleteCart = await axios.delete(`http://localhost:8080/api/products/addtocart/${productId}`)
-                // Reload the page after removing the item from the cart
                 location.reload();
                 console.log(deleteCart, "data")
             } catch (err) {
@@ -227,14 +236,12 @@
             }
         }
 
-        // Function to update the total count in the header
         function updateTotalCount(count) {
             const totalCountElement = document.getElementById('total-count');
             totalCountElement.textContent = count;
         }
 
 
-        // Function to create a summary element for a product
         function createSummaryElement(product) {
 
 
@@ -248,22 +255,17 @@
             //1st col-6 ***** left side
 
 
-            // Create the product element
+
             const productSummary = document.createElement('div');
             productSummary.classList.add('col-6', 'product-summary');
-            // productSummary.textContent = product.productId.title;
 
-            // Create the product name element
             const porductNamePrice = document.createElement('div');
             porductNamePrice.classList.add('product-bill');
-            // porductNamePrice.textContent = product.productId.title;
 
-            // Create the product name element
             const productTitle = document.createElement('div');
             productTitle.classList.add('product-name');
             productTitle.textContent = product.productId.title;
 
-            // Create the product name element
             const productQtyHardCoded = document.createElement('div');
             productQtyHardCoded.classList.add('product-quantity');
             productQtyHardCoded.textContent = "Quantity";
@@ -276,23 +278,17 @@
 
             //2nd col-6 ***** right side
 
-            // Create the product quantity element
             const productPriceQtyDesc = document.createElement('div');
             productPriceQtyDesc.classList.add('col-6');
-            // productPriceQtyDesc.textContent = product.quantity;
 
 
-            // Create the product name element
             const porductPriceQty = document.createElement('div');
             porductPriceQty.classList.add('product-bill');
-            // porductNamePrice.textContent = product.productId.title;
 
-            // Create the product name element
             const productPrice = document.createElement('div');
             productPrice.classList.add('product-price');
             productPrice.textContent = product.productId.price;
 
-            // Create the product name element
             const productQty = document.createElement('div');
             productQty.classList.add('product-quantity');
             productQty.textContent = product.quantity;
@@ -302,7 +298,6 @@
 
             // 3rd col-12 == col (for total of each product)
 
-            // Create the product quantity element
             const productTotalDesc = document.createElement('div');
             productTotalDesc.classList.add('col', 'border-top');
             // productTotalDesc.textContent = product.quantity;

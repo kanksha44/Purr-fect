@@ -15,7 +15,7 @@
 <body>
     <div class="service-nav">
         <h1>Services</h1>
-        <button><a href="../index.html">Go back</a><i class="fa-solid fa-right-to-bracket fa-rotate-180"></i></button>
+        <button><a href="../home.html">Go back</a><i class="fa-solid fa-right-to-bracket fa-rotate-180"></i></button>
     </div>
     <div id="services-page">
         <div class="services-page-content">
@@ -157,7 +157,7 @@
             console.log("hehehehe23:")
             // Replace "Login.html" with the actual URL of your login page
             console.log("object", window.location.href)
-            window.location.href = './../Register.html';
+            window.location.href = './../index.html';
         }
 
         // Function to handle the protective routing for the home page
@@ -171,7 +171,7 @@
 
         // On loading the home page, check if the user is authenticated
         window.onload = function () {
-            // console.log("hehehehe:5", window.location.pathname) // /D:/Function%20up/Frontend/HTMLCSS%20javascript/Petcare%20project%20mern/Petcare/index.html
+            // console.log("hehehehe:5", window.location.pathname) // /D:/Function%20up/Frontend/HTMLCSS%20javascript/Petcare%20project%20mern/Petcare/home.html
             const filename = window.location.pathname.split("/").pop();
             console.log("Filename:", filename);
             if (filename === "services.html") {

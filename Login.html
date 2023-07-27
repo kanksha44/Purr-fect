@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <a href="#">Forget Password?</a>
-                        <p>Don't have an account? <a href="./Register.html">Register</a></p>
+                        <p>Don't have an account? <a href="./index.html">Register</a></p>
                     </form>
                 </div>
             </div>
@@ -83,12 +83,12 @@
                     }).then(() => {
                         // Redirect to the login page after displaying the sweet alert
                         document.getElementById('loginForm').reset();
-                        window.location.href = './index.html';
+                        window.location.href = './home.html';
                     });
 
                     // console.log(response, "rrrrr")
                     // document.getElementById('loginForm').reset();
-                    // window.location.href = './index.html';
+                    // window.location.href = './home.html';
                 } else {
                     alert(error.response.data.message)
                     alert(response)
@@ -116,7 +116,7 @@
             console.log("password ;;", password)
 
             try {
-                const response = await axios.post('http://localhost:8080/api/auth', { email, password });
+                const response = await axios.post('https://purrfect.onrender.com/api/auth', { email, password });
                 console.log(response, "login api");
 
                 // Handle the response from the API
@@ -134,12 +134,12 @@
                     }).then(() => {
                         // Redirect to the login page after displaying the sweet alert
                         document.getElementById('loginForm').reset();
-                        window.location.href = './index.html';
+                        window.location.href = './home.html';
                     });
 
                     // console.log(response, "rrrrr")
                     // document.getElementById('loginForm').reset();
-                    // window.location.href = './index.html';
+                    // window.location.href = './home.html';
                 } else {
                     alert(error.response.data.message)
                     alert(response)

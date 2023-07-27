@@ -71,7 +71,7 @@
 <body>
     <div class="backbtn">
         <h5>Add to Cart <i class="fa-solid fa-cart-shopping fa-flip"></i></h5>
-        <button><a href="../index.html">Go back</a></button>
+        <button><a href="../home.html">Go back</a></button>
     </div>
     <div class="container-fluid">
 
@@ -227,7 +227,7 @@
         async function removeItem(productId) {
             console.log('Remove Item from Cart:', productId);
             try {
-                const deleteCart = await axios.delete(`http://localhost:8080/api/products/addtocart/${productId}`)
+                const deleteCart = await axios.delete(`https://purrfect.onrender.com/api/products/addtocart/${productId}`)
                 location.reload();
                 console.log(deleteCart, "data")
             } catch (err) {
@@ -361,7 +361,7 @@
         // Make a request to the products API endpoint using Axios
         async function getProducts() {
             try {
-                const response = await axios.get('http://localhost:8080/api/products/addtocart/');
+                const response = await axios.get('https://purrfect.onrender.com/api/products/addtocart/');
                 // console.log("productsdata", response)
                 const products = response.data.cartItems;
 

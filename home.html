@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./home.css">
+    <!-- Font Awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- javascript -->
+    <script src="index.js" defer></script>
+    <!-- axios cdn -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"
+        integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- sweet alert cdn -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <title>Purr-fect</title>
+</head>
+
+<body>
+    <section class="topnav" id="main-container">
+        <nav>
+
+            <div class="logo"><img src="./Assets/catlogo.png" alt="cat">
+                <h4>Purr-fect</h4>
+            </div>
+
+            <ul class="main-container-menu menu-btn-open">
+                <li><a href="#products">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#getinvolved">Get Involved</a></li>
+                <li><a href="#whoweare">Who We Are</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="btn-batch">
+                <div class="sidebar-btn">
+                    <ul class="main-container-menu-resp menu-btn-open-resp">
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#getinvolved">Get Involved</a></li>
+                        <li><a href="#whoweare">Who We Are</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <i class="fa-solid fa-xmark nav-icon-x" id="nav-icon-x"></i>
+                    </ul>
+                </div>
+                <div class="cart-container">
+                    <a href="Pages/addtocart.html"><i class="fa-solid fa-shopping-cart" id="cart-icon"></i></a>
+                    <!-- <span id="cart-count">0</span> -->
+                </div>
+                <button class="nav-btn donate-btn">Donate</button>
+                <button onclick="logoutBtn()" class="nav-btn logout-icon"><a href="./index.html">Logout <i
+                            class="fa-solid fa-arrow-right-from-bracket"></i></a></button>
+                <i class="fa-solid fa-bars nav-icon-bar" id="nav-icon-bar"></i>
+            </div>
+
+        </nav>
+
+
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-title">
+                    <h1>Purr-fect Pet Care: Nurturing Your cat Friends</h1>
+                </div>
+                <div class="hero-content">
+                    <p>At Purr-fect Pet Care, we understand the unique needs of your beloved cats and strive to provide
+                        them with exceptional care and attention.</p>
+                </div>
+                <div class="hero-btn">
+                    <button><a href="#services">Our services <i
+                                class="fa-solid fa-arrow-up-right-from-square"></i></a></button>
+                    <button><a href="#">Schedule a call <i class="fa-solid fa-phone"></i></i></a></button>
+                </div>
+            </div>
+            <div class="hero-images">
+                <video width="100%" height="100%" autoplay muted loop>
+                    <source src="./Assets/landingpage-vdo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="products-heading">
+            <h1>Our Products</h1>
+        </div>
+
+        <div class="card-wrapper" id="card-wrapper">
+            <!-- <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product1.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button onclick="toggleCounter()">Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product2.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button onclick="toggleCounter()">Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product1.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product2.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product1.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div>
+            <div class="card-box">
+                <div class="card-images">
+                    <img src="./Assets/product2.png" alt="cat products">
+                </div>
+                <div class="card-title">@Purrfect Dry Food, Chicken</div>
+                <p>Now in<del>Rs.150/</del>Rs.110/- </p>
+                <button>Add to Cart</button>
+
+            </div> -->
+
+
+        </div>
+    </section>
+
+    <section id="services">
+
+        <div class="main-service">
+            <h2 id="services-heading">Our Services</h2>
+            <section class="animation">
+                <div class="first">
+                    <div>Pawsitive Health</div>
+                </div>
+                <div class="second">
+                    <div>From Meows to High Fives</div>
+                </div>
+                <div class="third">
+                    <div>Pampered Paws</div>
+                </div>
+            </section>
+        </div>
+        <div class="wrapper-container">
+
+            <div class="card-details">
+                <div class="card">
+                    <figure class="service-img">
+                        <img src="./Assets/cat-vet.jpg" alt="cat vet">
+                    </figure>
+                    <div class="card-content">
+
+                        <h1>Pawsitive Health</h1>
+                        <p class="title">Nurturing Your Cat's Well-being with Veterinary Care</p>
+                        <button><a href="./Pages/services.html">See more</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="card">
+                    <img src="./Assets/teach-cat.jpg" alt="cat teach">
+                    <div class="card-content">
+                        <h1>From Meows to High Fives</h1>
+                        <p class="title">Teaching Commands & guidance to train your cat service
+                        </p>
+                        <button><a href="./Pages/services.html">See more</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="card">
+                    <img src="./Assets/cat-wash.jpg" alt="cat wash">
+                    <div class="card-content">
+                        <h1>Pampered Paws</h1>
+                        <p class="title">Elevating Your Cat's Beauty with Professional Grooming</p>
+                        <button><a href="./Pages/services.html">See more</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="card">
+                    <img src="./Assets/cat-play.jpg" alt="cat play">
+                    <div class="card-content">
+                        <h1>Social Playdates</h1>
+                        <p class="title">Introducing Your Cat to Feline Companions</p>
+                        <button><a href="./Pages/services.html">See more</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="card">
+                    <img src="./Assets/cat-eating.jpg" alt="cat eat">
+                    <div class="card-content">
+                        <h1>From Kibble to Gourmet</h1>
+                        <p class="title">Exploring a Variety of Pet Food Options</p>
+                        <button><a href="./Pages/services.html">See more</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-details">
+                <div class="card">
+                    <img src="./Assets/dressup2.jpg" alt="cat eat">
+                    <div class="card-content">
+                        <h1>Cat Clothing</h1>
+                        <p class="title">Exploring a Variety of Cat Dressup</p>
+                        <button><a href="./Pages/services.html">See more</a></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </section>
+    <section id="getinvolved">
+        <div class="wrapper-getinvolved">
+            <div class="getinvolved-img">
+                <img src="Assets/pic3.jpg" alt="">
+            </div>
+            <div class="getinvolved-content">
+                <h1>Rescuing Stray Cats and Building Forever Bonds</h1>
+                <p>Join the compassionate community of cat lovers who recognize the immeasurable value of adopting stray
+                    cats, as you embark on a journey of companionship and create a lasting bond that brings immeasurable
+                    joy and happiness to both you and your newfound feline friend </p>
+            </div>
+        </div>
+
+
+
+
+    </section>
+    <section id="whoweare">
+        <div class="wrapper-whoweare">
+            <div class="whoweare-content">
+                <h1>Who we are</h1>
+                <p>At Pur-fect, we envision a world where every cat companion receives the utmost care, love, and
+                    attention they deserve. Through our comprehensive services, including cat sitting, veterinary care,
+                    premium cat food, and dedicated cat rescue efforts, we strive to create a harmonious and thriving
+                    community of happy, healthy cats and their devoted human companions.</p>
+                <h3>Few of the our subscribers :</h3>
+            </div>
+            <div class="slider">
+
+                <div class="wrapper">
+                    <i id="left" class="fa-solid fa-angle-left"></i>
+                    <ul class="carousel">
+                        <li class="card">
+                            <div class="img"><img src="./Assets/sub1.jpg" alt="cat happy owner img" draggable="false">
+                            </div>
+                            <p>Great brand for cat lovers, they truly understand feline needs.</p>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="./Assets/sub2.jpg" alt="cat happy owner img" draggable="false">
+                            </div>
+                            <p>Exceptional cat care service, my furry friend loves it!</p>
+
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="./Assets/sub3.jpg" alt="cat happy owner img" draggable="false">
+                            </div>
+                            <p>The cat sitters are reliable and trustworthy, highly recommended!</p>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="./Assets/sub4.jpg" alt="cat happy owner img" draggable="false">
+                            </div>
+                            <p>Thank you for providing top-notch veterinary care for my cat</p>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="./Assets/sub5.jpg" alt="cat happy owner img" draggable="false">
+                            </div>
+                            <p>Your cat food has made a noticeable difference in my cat's health</p>
+                        </li>
+                        <li class="card">
+                            <div class="img"><img src="./Assets/sub1.jpg" alt="cat happy owner img" draggable="false">
+                            </div>
+                            <p>Rescued my beloved cat, forever grateful for your efforts</p>
+                        </li>
+                    </ul>
+                    <i id="right" class="fa-solid fa-angle-right"></i>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+
+        <div class="subscribe">
+            <h1>Subscribe NewsLetter & Get Purr-fect News</h1>
+            <!-- <span><input type="email" placeholder="Enter your E-mail Address"><button>Subscribe Now</button></span> -->
+            <div class="subscribe-form">
+                <form action="https://formspree.io/f/xaygyjzy" method="POST">
+                    <label><input type="email" name="email" placeholder="Enter your email">
+                    </label>
+
+                    <button type="submit">Subscribe now</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-main">
+            <div class="footer1">
+                <h1>Purr-Fect</h1>
+                <ul>
+                    <li>Opening Times</li>
+                    <li>
+                        <p>Monday - Saturday: 10am - 4pm</p>
+                    </li>
+                    <li>
+                        <p>Sunday: Closed</p>
+                    </li>
+                    <li>
+                        <p>Sunday: Closed</p>
+                    </li>
+                </ul>
+
+                <div class="icons"><i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-regular fa-envelope"></i>
+                    <i class="fa-brands fa-facebook"></i>
+                </div>
+            </div>
+            <div class="footer2">
+                <h1>Address</h1>
+                <ul>
+                    <li>15-17 Oldgate</li>
+                    <li>1Morepeth</li>
+                    <li>Ne611QF</li>
+                    <li>+91 987654321</li>
+                    <li>info@purr-fect.com</li>
+                </ul>
+            </div>
+            <div class="footer3">
+                <h1>Quick Links</h1>
+                <ul>
+                    <li>Cats</li>
+                    <li>Kitten</li>
+                    <li>Pregnent cats</li>
+                    <li>Injured Cats</li>
+                    <li>Cat Food</li>
+                </ul>
+            </div>
+            <div class="footer4">
+                <h1>Here to help</h1>
+                <ul>
+                    <li>About us</li>
+                    <li>FAQ</li>
+                    <li>Blog</li>
+                    <li>Delivery</li>
+                    <li>Contact us</li>
+                </ul>
+            </div>
+            <div id="scrollToTopBtn">
+                <i class="fas fa-arrow-up"></i>
+            </div>
+        </div>
+
+    </section>
+
+
+
+
+    <!-- <script>
+
+        // 3rd
+        const mobileBtn = document.getElementById("nav-icon-bar");
+        const mobileBtnExit = document.getElementById("nav-icon-x");
+        const nav = document.querySelector(".sidebar-btn");
+        const menu = document.querySelector(".main-container-menu-resp");
+
+        mobileBtn.addEventListener("click", () => {
+            nav.classList.add("menu-btn-open-resp");
+            mobileBtn.style.display = "none";
+            mobileBtnExit.style.display = "block";
+            menu.classList.add("show");
+        });
+
+        mobileBtnExit.addEventListener("click", () => {
+            nav.classList.remove("menu-btn-open-resp");
+            mobileBtn.style.display = "block";
+            mobileBtnExit.style.display = "none";
+            menu.classList.remove("show");
+        });
+
+
+        mobileBtnExit.addEventListener("click", closeSidebar);
+
+        // Get all the links in the sidebar
+        const sidebarLinks = document.querySelectorAll(".main-container-menu-resp li");
+
+
+        // Attach click event listener to each link
+        sidebarLinks.forEach(link => {
+            link.addEventListener("click", closeSidebar);
+        });
+
+
+
+
+    </script> -->
+
+
+
+    <script>
+
+        //add to cart frontend
+
+        // Get the counter icon element
+        const counterIcon = document.getElementById('cart-icon');
+
+        // Initialize the counter value and the increment toggle
+        let counter = 0;
+        let increment = true;
+
+        // Function to update the counter value on the page
+        function updateCounter() {
+            counterIcon.textContent = counter.toString();
+        }
+
+        async function getCountData() {
+            const getCount = await axios.get(`https://purrfect.onrender.com/api/products/addtocart`)
+            console.log("getCount ::", getCount)
+            counterIcon.textContent = getCount.data.totalQuantity
+        }
+        getCountData()
+        // Function to toggle the counter between increase and decrease
+        async function toggleCounter(productId, productName) {
+            console.log("productId ::", productId)
+            console.log("productName ::", productName)
+            swal(`${productName} Added to the cart!`);
+            const addToCart = await axios.get(`https://purrfect.onrender.com/api/products/addtocart/${productId}`)
+            // console.log(${})
+            console.log(addToCart, "data")
+            getCountData()
+
+            // if (increment) {
+            //     counter++;
+            // } else {
+            //     counter--;
+            // }
+            // updateCounter();
+            // increment = !increment; // Toggle the increment variable
+        }
+
+        // Call the updateCounter() function initially to display the initial value
+        // updateCounter();
+
+
+        //=================================================================================================
+
+        // products from backend
+        const productsContainer = document.getElementById("card-wrapper");
+        console.log("productsContainer", productsContainer)
+        axios
+            .get("https://purrfect.onrender.com/api/products")
+            .then(function (response) {
+                // Loop through products
+                console.log("response", response)
+                response.data.product.forEach((product) => {
+                    // Create a product card element
+                    const productwrapper = document.createElement("div");
+                    productwrapper.classList.add("card-box");
+
+                    productwrapper.innerHTML = `
+        <div class="card-box">
+          <img src="${product.image}" class="card-images" alt="${product.title}">
+
+          <div class="card-body">
+            <h5 class="card-title">${product.title}</h5>
+            <p class="card-text">${product.description}</p>
+            <p class="price">$${product.price.toFixed(2)}</p>
+            <button onclick="toggleCounter('${product._id}','${product.title}')">Add to Cart</button>
+          </div>
+        </div>
+      `
+                    productsContainer.appendChild(productwrapper);
+                });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+        //======================================================================================================
+
+
+
+
+
+        // protected routing code starts
+
+        // Function to check if the user is authenticated (logged in)
+        function isAuthenticated() {
+            console.log("hehehehe2:")
+            // Replace this logic with your actual authentication check
+            // For example, you can check if the user is logged in by verifying if there is a valid token in local storage
+            const token = localStorage.getItem('authToken');
+            console.log('check', token)
+            return token !== null && token !== undefined;
+        }
+
+        // Function to redirect to the login page if the user is not authenticated
+        function redirectToLogin() {
+            console.log("hehehehe23:")
+            // Replace "Login.html" with the actual URL of your login page
+            window.location.href = './index.html';
+        }
+
+        // Function to handle the protective routing for the home page
+        function protectHomePage() {
+            console.log("hehehehe4:")
+            if (!isAuthenticated()) {
+
+                redirectToLogin();
+            }
+        }
+
+        // On loading the home page, check if the user is authenticated
+        window.onload = function () {
+            // console.log("hehehehe:5", window.location.pathname) // /D:/Function%20up/Frontend/HTMLCSS%20javascript/Petcare%20project%20mern/Petcare/home.html
+            const filename = window.location.pathname.split("/").pop();
+            console.log("Filename:", filename);
+            if (filename === "home.html") {
+                console.log("hehehe")
+                protectHomePage();
+            }
+        };
+
+        // protected routing code ends
+
+
+        // logout starts
+        function logoutBtn() {
+            console.log("logout btn");
+            localStorage.removeItem('authToken');
+            window.location.href = './index.html';
+        };
+        // logout ends
+
+        //==============================================================================================================
+        // Get references to the necessary elements
+        const mobileBtn = document.getElementById("nav-icon-bar");
+        const mobileBtnExit = document.getElementById("nav-icon-x");
+        const nav = document.querySelector(".sidebar-btn");
+        const menu = document.querySelector(".main-container-menu-resp");
+
+        // Function to close the sidebar
+        function closeSidebar() {
+            nav.classList.remove("menu-btn-open-resp");
+            mobileBtn.style.display = "block";
+            mobileBtnExit.style.display = "none";
+            menu.classList.remove("show");
+        }
+
+        mobileBtn.addEventListener("click", () => {
+            nav.classList.add("menu-btn-open-resp");
+            mobileBtn.style.display = "none";
+            mobileBtnExit.style.display = "block";
+            menu.classList.add("show");
+        });
+
+        mobileBtnExit.addEventListener("click", closeSidebar);
+
+        // Get all the links in the sidebar
+        const sidebarLinks = document.querySelectorAll(".main-container-menu-resp a");
+
+
+        // sidebarLinks.forEach(link => {
+        //     link.addEventListener("click", () => {
+        //         console.log(`Link clicked ${link}`);
+        //     });
+        // });
+
+        // Attach click event listener to each link
+        sidebarLinks.forEach(link => {
+            // console.log(link, "adsfasdf")
+            link.addEventListener("click", closeSidebar);
+        });
+
+
+
+        //***************************** *******  scrolling functionality *******************************************
+
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // Show/hide the button based on the scroll position
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+
+        // Scroll to top when the button is clicked
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+
+    </script>
+</body>
+
+</html>

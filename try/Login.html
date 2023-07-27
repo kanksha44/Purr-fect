@@ -34,7 +34,7 @@
                 <input type="email" id="email" autocomplete="off" autofocus placeholder="Enter your Email">
                 <input type="password" id="password" autocomplete="off" placeholder="Enter your password">
                 <button type="submit" ><a href="#">Login</a></button>
-                <p>Not a user? <span><a href="./Register.html">Register</a></span></p>
+                <p>Not a user? <span><a href="./index.html">Register</a></span></p>
             </form>
         </div>
     </div> -->
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                         <a href="#">Forget Password?</a>
-                        <p>Don't have an account? <a href="./Register.html">Register</a></p>
+                        <p>Don't have an account? <a href="./index.html">Register</a></p>
                     </form>
                 </div>
             </div>
@@ -104,12 +104,12 @@
                     }).then(() => {
                         // Redirect to the login page after displaying the sweet alert
                         document.getElementById('loginForm').reset();
-                        window.location.href = './index.html';
+                        window.location.href = './home.html';
                     });
 
                     // console.log(response, "rrrrr")
                     // document.getElementById('loginForm').reset();
-                    // window.location.href = './index.html';
+                    // window.location.href = './home.html';
                 } else {
                     alert(error.response.data.message)
                     alert(response)
